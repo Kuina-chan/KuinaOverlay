@@ -4,19 +4,14 @@ const socket = new WebSocketManager('127.0.0.1:24050');
 
 const cache = {};
 
-let Key1Cont = document.getElementById('Key1Cont');
-let Key2Cont = document.getElementById('Key2Cont');
-let Mouse1Cont = document.getElementById('Mouse1Cont');
-let Mouse2Cont = document.getElementById('Mouse2Cont');
 let playingPPSS;
-let pp_text;
 
 let k1 = new KeyOverlay('k1', 'k1Tiles', { speed: 0.2, keyTextId: "k1Text", keyNameId: "key1"}),
     k2 = new KeyOverlay('k2', 'k2Tiles', { speed: 0.2, keyTextId: "k2Text", keyNameId: "key2"}),
     m1 = new KeyOverlay('m1', 'm1Tiles', { speed: 0.2, keyTextId: "m1Text", keyNameId: "key3"}),
     m2 = new KeyOverlay('m2', 'm2Tiles', { speed: 0.2, keyTextId: "m2Text", keyNameId: "key4"});
 
-socket.api_v2(({ play, beatmap, state, performace, files, folders }) => {
+socket.api_v2(({ play, beatmap, state, performance, files, folders, resultsScreen }) => {
     try {
 
     //playing PP
@@ -87,17 +82,14 @@ socket.api_v2(({ play, beatmap, state, performace, files, folders }) => {
     simulate(totalobject, play.mods.number);
 
     pp.innerHTML = play.pp.current.toFixed(0);
-    pp100.innerHTML = performace.accuracy[100];
+    pp100.innerHTML = performance.accuracy[100];
     modsUsed.innerHTML = `Mods: ${play.mods.name}`
 
     if (state.number == 2) {
         ppM.style.display = `none`
         ppG.style.display = `initial`
-        pp_text = play.pp.current.toFixed(0) + " / " + playingPPSS + "pp";
-        ppCont.style.width = 20 + (pp_text.length * 16) + 'px'
     }
     else if (state.number == 7 || state.number == 14) {
-        pp_text = play.pp.current.toFixed(0);
         ppFC.innerHTML = playingPPSS;
     } else if (state.number == 5){
 
@@ -105,7 +97,6 @@ socket.api_v2(({ play, beatmap, state, performace, files, folders }) => {
     else {
         ppM.style.display = `initial`;
         ppG.style.display = `none`;
-        ppCont.style.width = 20 + (pp_text.length * 20) + 'px';
     };
 
     //mod combination
