@@ -16,7 +16,7 @@ let k1 = new KeyOverlay('k1', 'k1Tiles', { speed: 0.2, keyTextId: "k1Text", keyN
     m1 = new KeyOverlay('m1', 'm1Tiles', { speed: 0.2, keyTextId: "m1Text", keyNameId: "key3"}),
     m2 = new KeyOverlay('m2', 'm2Tiles', { speed: 0.2, keyTextId: "m2Text", keyNameId: "key4"});
 
-socket.api_v2(({ play, beatmap, state, resultsScreen, settings, files, folders }) => {
+socket.api_v2(({ play, beatmap, state, performace, files, folders }) => {
     try {
 
     //playing PP
@@ -87,7 +87,7 @@ socket.api_v2(({ play, beatmap, state, resultsScreen, settings, files, folders }
     simulate(totalobject, play.mods.number);
 
     pp.innerHTML = play.pp.current.toFixed(0);
-    pp100.innerHTML = playingPPSS;
+    pp100.innerHTML = performace.accuracy[100];
     modsUsed.innerHTML = `Mods: ${play.mods.name}`
 
     if (state.number == 2) {
@@ -160,6 +160,19 @@ socket.api_v2(({ play, beatmap, state, resultsScreen, settings, files, folders }
         };
 
     };
+
+    async function simulate(currentobject, modsnumber) {
+    try {
+        let simulate = null
+        const data = await axios.get(`http://127.0.0.1:24050/api/calculate/pp?passedObjects=${currentobject}&mods=${modsnumber}`).then((response) => {
+            simulate = response.data
+        });
+        playingPPSS = simulate.performance.pp.toFixed(0);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
     } catch (error) {
         console.log(error);
     };
@@ -177,15 +190,3 @@ socket.api_v2_precise((data) => {
     console.log(err);
   };
 });
-
-async function simulate(currentobject, modsnumber) {
-    try {
-        let simulate = null
-        const data = await axios.get(`http://127.0.0.1:24050/api/calculate/pp?passedObjects=${currentobject}&mods=${modsnumber}`).then((response) => {
-            simulate = response.data
-        });
-        playingPPSS = simulate.performance.pp.toFixed(0);
-    } catch (error) {
-        console.error(error);
-    }
-}
