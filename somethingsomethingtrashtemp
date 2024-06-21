@@ -1,0 +1,32 @@
+tempPPss = simulate.performance.pp.toFixed(0)
+
+async function simulate(currentobject, modsnumber) {
+    try {
+        let simulate = null
+        const data = await axios.get(`http://127.0.0.1:24050/api/calculate/pp?passedObjects=${currentobject}&mods=${modsnumber}`).then((response) => {
+            simulate = response.data
+        });
+        
+    } catch (error) {
+        console.error(error);
+    }
+}
+
+async function playpp(acc, modsnumber){
+    let accuracy = (hits300 + hits100 / 3 + hits50 / 6) / (hits300 + hits100 + hits50 + hits0) * 100;
+    try{
+        let simulate = null
+        const data = await axios.get(`http://127.0.0.1:24050/api/calculate/pp?acc=${accuracy}&mods=${modsnumber}`).then((response) => {
+            simulate = response.data
+        })
+        if (data.state.number == 7 || data.state.number == 14){
+            pp_text = currentPP + " / " + data.performance.accuracy[100].toFixed(0) + "pp";
+        } else {
+            pp_text = data.performance.accuracy[100].toFixed(0) + "pp";
+        }
+        currentPP = simulate.performance.pp.toFixed(0)
+        console.log(currentPP)
+    } catch (error){
+        console.log(error)
+    }
+}

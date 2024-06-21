@@ -1,0 +1,80 @@
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="css/style.css" />
+		<link rel="stylesheet" href="css/odometr.css" />
+        <link rel="stylesheet" href="css/animate.css" />
+        <link rel="stylesheet" href="css/keyOverlay.css" />
+		<script src="deps/countUp.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+		<script src="deps/odometr.js"></script>
+        <script src="deps/KeyOverlay.js"></script>
+    </head>
+    <body>
+        <div id="bg"></div>
+        <div id="main">
+            <div id="ppCont">
+                <div id="pp_text">
+                    <div id="ppG">
+                        <span id="pp" class="odometer"></span><span style="font-size: 25px;"> / </span><span id="ppFC" class="odometer"></span><span style="font-family: Poppins-Semibold;">pp</span>
+                    </div>
+                    <div id="ppM">
+                        <span id="pp100" class="odometer"></span><span style="font-family: Poppins-Semibold;">pp</span>
+                    </div>
+                </div>
+            </div>
+            <div id="bpmCont">
+                <span id="bpm" class="odometer"></span><span style="font-size: 25px;">bpm</span>
+            </div>
+            <div id="accInfo">
+                <div id="h100Cont">
+                    <div id="h100" class="odometer"></div>
+                </div>
+                <div id="h50Cont">
+                    <div id="h50" class="odometer"></div>
+                </div>
+                <div id="h0Cont">
+                    <div id="h0" class="odometer"></div>
+                </div>
+                <div id="hSBCont">
+                    <div id="hSB" class="odometer"></div>
+                </div>
+            </div>
+            <div id="mapCont">
+                <div id="title"></div>
+                <div id="diff"></div>
+                <div id="SR"></div>
+            </div>
+            <div id="statsCont">
+                <div id="AR"></div>
+                <div id="CS"></div>
+                <div id="HP"></div>
+                <div id="OD"></div>
+            </div>
+            <div id="modsUsed"></div>
+            <div id="keys">
+                <div class="keyContainer">
+                    <div id="Key1Cont" class="tiles relative">
+                        <div id="k1Tiles" class="absolute"></div>
+                    </div>
+                </div>
+                <div class="keyContainer">
+                    <div id="Key2Cont" class="tiles relative">
+                        <div id="k2Tiles" class="absolute"></div>
+                    </div>
+                </div>
+                <div class="keyContainer">
+                    <div id="Mouse1Cont" class="tiles relative">
+                        <div id="m1Tiles" class="absolute"></div>
+                    </div>
+                </div>
+                <div class="keyContainer">
+                    <div id="Mouse2Cont" class="tiles relative">
+                        <div id="m2Tiles" class="absolute"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script type="module" src="index.js"></script>
+</html>

@@ -1,0 +1,211 @@
+@font-face {
+	font-family: "Poppins-Regular";
+	src: url("../fonts/Poppins-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Poppins-Semibold";
+	src: url("../fonts/Poppins-SemiBold.ttf");
+}
+
+body,
+html {
+	padding: 0;
+	margin: 0;
+	overflow-y: hidden;
+}
+.odometer.odometer-auto-theme{
+    font-family: Arial, Helvetica, sans-serif !important;
+    font-weight: 700;
+}
+.odometer.odometer-auto-theme .odometer-digit .odometer-digit-inner, .odometer.odometer-theme-default .odometer-digit .odometer-digit-inner {
+    padding-left: 5px !important;
+    padding-right: 5px !important;
+    margin-left: -5px !important;
+    margin-right: -5px !important;
+}
+#bg {
+    background-image: url('../static/stream.png');
+	background-size: 100%;
+	width: 1920px;
+	height: 1080px;
+	position: relative;
+	z-index: -1;
+}
+#main {
+    font-family: "Poppins-Semibold";
+    width: 1920px;
+	height: 1080px;
+	position: absolute;
+    left: 0;
+    top: 0;
+    color: white;
+}
+#ppCont {
+    position: absolute;
+    right: 290px;
+    bottom: 290px;
+    color: #efa7fc;
+    background: linear-gradient(90deg, #5f3f6b 0%, #7a518a 100%);
+    height: 40px;
+    font-size: 30px;
+    transition: ease 400ms;
+    border-radius: 10px;
+    z-index: -2;
+    text-align: center;
+    padding: 3px 0 8px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#bpmCont {
+    position: absolute;
+    right: 290px;
+    bottom: 350px;
+    color: #efa7fc;
+    background: linear-gradient(90deg, #5f3f6b 0%, #7a518a 100%);
+    height: 40px;
+    font-size: 30px;
+    transition: ease 400ms;
+    border-radius: 10px;
+    z-index: -2;
+    text-align: center;
+    padding: 8px 10px 2px 10px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#mapCont {
+    position: absolute;
+    bottom: 10px;
+    left: 30px;
+    width: 750px;
+    height: 110px;
+    border-radius: 10px;
+    background-size: 100%;
+    background-position: 50% 50%;
+    background-color: #5f3f6b;
+    border: 5px solid #faf4e9;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    overflow: hidden;
+    font-family: "Poppins-Regular";
+}
+#title {
+    font-size: 26px;
+    margin-top: 5px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+#diff {
+    margin-top: -5px;
+    font-size: 20px;
+}
+#SR {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    bottom: -22px;
+    border-radius: 10px;
+    width: 90px;
+    height: 50px;
+    font-size: 20px;
+    color: #efa7fc;
+    background: linear-gradient(90deg, #5f3f6b 0%, #7a518a 100%);
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.3);
+}
+#statsCont {
+    position: absolute;
+    display: flex;
+    bottom: 7px;
+    left: 43px;
+    height: 40px;
+    width: 730px;
+    justify-content: space-around;
+}
+#AR,#HP,#CS,#OD {
+    font-size: 20px;
+    text-align: center;
+}
+#CS {
+    position: relative;
+    right: 45px;
+}
+#HP {
+    position: relative;
+    left: 45px;
+}
+#modsUsed {
+    padding: 5px 15px 5px 15px;
+    bottom: 150px;
+    right: 630px;
+    border-radius: 20px;
+    position: absolute;
+    font-family: "Poppins-Semibold";
+    color: #efa7fc;
+    background: linear-gradient(90deg, #5f3f6b 0%, #7a518a 100%);
+    transition: ease-in-out 500ms;
+}
+#accInfo {
+    position: absolute;
+    top: 170px;
+    left: 40px;
+    height: 300px;
+    transition: ease-in-out 500ms;
+    z-index: -2;
+    font-size: 30px;
+}
+#h100,
+#h50,
+#h0,
+#hSB {
+    position: relative;
+    left: 20px;
+    top: 5px;
+    width: 100px;
+    text-align: left;
+}
+
+#h100Cont,
+#h50Cont,
+#h0Cont,
+#hSBCont {
+    position: relative;
+    right: -10px;
+    text-align: left;
+    width: 8px;
+    height: 40px;
+    border-radius: 10px;
+    margin-top: 20px;
+    transition: ease-in-out 500ms;
+    z-index: -1;
+}
+#h100Cont {
+    background-color: rgb(66, 255, 104);
+    box-shadow: 0 0 10px rgb(66, 255, 104);
+}
+#h50Cont {
+    background-color: rgb(255, 255, 49); 
+    box-shadow: 0 0 10px rgb(255, 255, 49);
+}
+#h0Cont {
+    background-color: rgb(255, 52, 52);  
+    box-shadow: 0 0 10px rgb(255, 52, 52);
+}
+#hSBCont {
+    background-color: rgb(184, 62, 255);
+    box-shadow: 0 0 10px rgb(184, 62, 255);
+}
+.over{
+    display: inline-block;
+    animation: scroll 6s linear 0s infinite;
+}
+@keyframes scroll{
+    0% {
+      transform: translate3D(calc(100% + 9rem), 0, 0);
+    }
+    100%{
+      transform: translate3D(calc(-100% - 9rem), 0, 0);
+    }
+}
